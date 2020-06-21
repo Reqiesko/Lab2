@@ -177,10 +177,10 @@ void keyboard_input(double **array, int m, int n) {
 void random_input(double** array, int m, int n) {
 	int max, min;	
 	cout << "”кажите минимальное возможное значение: ";
-	cin >> min;
+	min = number_check();
 	cout << endl;
 	cout << "”кажите максималльное возможное значение: ";
-	cin >> max;
+	max = number_check();
 	for (int i = 0; i < f_row; i++) {
 		for (int j = 0; j < n; j++) {		
 			array[i][j] = min + rand() % max;
