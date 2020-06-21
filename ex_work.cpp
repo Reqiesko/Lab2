@@ -15,8 +15,13 @@ void keyboard_way() {
 	cout << "¬ведите количество столбцов: " << endl;
 	n = number_check();
 	double** mat = create(m, n);
-	keyboard_input(mat, m, n);
+	keyboard_input(mat, m, n);	
 	fill_mas(mat, m, n);
+	cout << "—охранить исходные данные в файл? " << endl;
+	if (save_result_q() == 1) {
+		cout << "¬ведите путь к файлу вывода: " << endl;
+		print_source(inpath, mat, m, n);
+	}
 	print(mat, m, n);
 	cout << "—охранить массив в файл? " << endl;
 	if (save_result_q() == 1) {
@@ -131,6 +136,11 @@ void random_way() {
 	random_input(mat, m, n);
 	fill_mas(mat, m, n);
 	print(mat, m, n);
+	cout << "—охранить исходные данные в файл? " << endl;
+	if (save_result_q() == 1) {
+		cout << "¬ведите путь к файлу вывода: " << endl;
+		print_source(inpath, mat, m, n);
+	}
 	cout << "—охранить массив в файл? " << endl;
 	if (save_result_q() == 1) {
 		cout << "¬ведите путь к файлу вывода: " << endl;

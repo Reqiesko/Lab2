@@ -9,6 +9,10 @@ void print(double** array, int m, int n);
 
 void print_in_file(string inpath, string outpath, double** array, int m, int n);
 
+void print_source(string& inpath, double** array, int m, int n);
+
+void save_source(string inpath, double** array, int modout, int m, int n);
+
 void save_result(string path, double** array, int modout, int m, int n);
 
 bool error_check();

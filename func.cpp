@@ -1,5 +1,8 @@
 #include "func.h"
 
+
+const int f_row = 1;
+
 void fill_mas(double **array, int m, int n) {
 	for (int i = 1; i < m; i++) {
 		for (int j = 0; j < n; j++) {		
@@ -82,6 +85,58 @@ void print_in_file(string inpath, string outpath, double** array, int m, int n) 
 		}
 	}
 }
+
+void print_source(string& inpath, double** array, int m, int n) {
+	cin >> inpath;
+	ifstream fcheck;
+	fcheck.open(inpath);
+	while (!check_read_only(inpath)) {
+		fcheck.close();
+		cout << "Введите путь к файлу: " << endl;
+		cin >> inpath;
+		fcheck.open(inpath);
+	}
+	while (file_name_check(inpath)) {
+		fcheck.close();
+		cout << "Ошибка! Некорректное путь или имя файла." << endl;
+		cout << "Введите путь к файлу: " << endl;
+		cin >> inpath;
+		fcheck.open(inpath, ios::in);
+	}
+	if (file_exist(inpath) == false) {
+		fcheck.close();
+		save_source(inpath, array, rewrite, m, n);
+	}
+	else {
+		fcheck.close();
+		if (file_check_size(inpath) == true) {
+			save_source(inpath, array, rewrite, m, n);
+		}
+		else {
+			save_source(inpath, array, wtdw_file(inpath), m, n);
+		}
+	}
+}
+void save_source(string inpath, double** array, int modout, int m, int n) {
+	ofstream fout;
+	if (modout == 1) {
+		fout.open(inpath, ios::out);
+		fout << " " << endl;
+	}
+	if (modout == 2) {
+		fout.open(inpath, ios::app);
+		fout << " " << endl;
+	}
+	fout << m << " " << n << endl;
+	for (int i = 0; i < f_row; i++) {
+		for (int j = 0; j < n; j++) {
+			fout << array[i][j] << " ";
+		}
+		fout << endl;
+	}
+	cout << "Исходные данные успешно сохранены! " << endl;
+}
+
 
 void save_result(string path, double** array, int modout, int m, int n) {
 	ofstream fout;

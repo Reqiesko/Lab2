@@ -5,5 +5,5 @@
 
 
 void tests() {
-	Menu();
+
 }
