@@ -134,13 +134,14 @@ void random_way() {
 	n = number_check();
 	double** mat = create(m, n);
 	random_input(mat, m, n);
-	fill_mas(mat, m, n);
-	print(mat, m, n);
 	cout << "—охранить исходные данные в файл? " << endl;
 	if (save_result_q() == 1) {
 		cout << "¬ведите путь к файлу вывода: " << endl;
 		print_source(inpath, mat, m, n);
 	}
+	fill_mas(mat, m, n);
+	print(mat, m, n);
+	
 	cout << "—охранить массив в файл? " << endl;
 	if (save_result_q() == 1) {
 		cout << "¬ведите путь к файлу вывода: " << endl;
@@ -181,8 +182,11 @@ void random_input(double** array, int m, int n) {
 	cout << "”кажите максималльное возможное значение: ";
 	cin >> max;
 	for (int i = 0; i < f_row; i++) {
-		for (int j = 0; j < n; j++) {
-			array[i][j] = min + rand() % max;		
-		}		
+		for (int j = 0; j < n; j++) {		
+			array[i][j] = min + rand() % max;
+			cout << "U" << "[" << i + 1 << "]" << "[" << j + 1 << "]" << " = ";
+			cout << array[i][j] << " ";
+		}
+		cout << endl;
 	}
 }
