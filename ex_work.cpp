@@ -155,20 +155,14 @@ void random_way() {
 }
 
 
-double** create(int m, int n) {
-	double** array = new double* [m];
-	for (int i = 0; i < m; i++) {
-		array[i] = new double[n];
-	}
-	return array;
-}
+
 
 
 void keyboard_input(double **array, int m, int n) {
 	for (int i = 0; i < f_row; i++) {
 		for (int j = 0; j < n; j++) {
 			cout << "U" << "[" << i + 1 << "]" << "[" << j + 1 << "]" << " = ";
-			cin >> array[i][j];				
+			array[i][j] = numb_check();			
 		}
 	}
 }

@@ -137,6 +137,13 @@ void save_source(string inpath, double** array, int modout, int m, int n) {
 	cout << "Исходные данные успешно сохранены! " << endl;
 }
 
+double** create(int m, int n) {
+	double** array = new double* [m];
+	for (int i = 0; i < m; i++) {
+		array[i] = new double[n];
+	}
+	return array;
+}
 
 void save_result(string path, double** array, int modout, int m, int n) {
 	ofstream fout;
@@ -208,7 +215,16 @@ int number_check() {
 	return a;
 }
 
-
+double numb_check() {
+	double a;
+	while (!(cin >> a) || (cin.peek() != '\n'))
+	{
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Ошибка! Пожалуйста введите число! " << endl;
+	}
+	return a;
+}
 bool check_read_only(string filename) {
 	ofstream file(filename, ios::in);
 	LPCSTR name = filename.c_str();

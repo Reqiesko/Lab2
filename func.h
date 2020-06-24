@@ -21,8 +21,12 @@ bool file_check_size(string pFile);
 
 int number_check();
 
+double numb_check();
+
 bool check_read_only(string filename);
 
 bool file_exist(string path);
 
 bool file_name_check(string filename);
+
+double** create(int m, int n);
