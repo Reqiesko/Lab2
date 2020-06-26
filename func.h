@@ -3,11 +3,11 @@
 
 
 
-void fill_mas(double** array, int m, int n);
+void fill_mat(double** array, int m, int n);
 
-void print(double** array, int m, int n);
+void print_mat(double** array, int m, int n);
 
-void print_in_file(string inpath, string outpath, double** array, int m, int n);
+void print_result_in_file(string inpath, string outpath, double** array, int m, int n);
 
 void print_source(string& inpath, double** array, int m, int n);
 
@@ -29,4 +29,4 @@ bool file_exist(string path);
 
 bool file_name_check(string filename);
 
-double** create(int m, int n);
+double** create_mat(int m, int n);

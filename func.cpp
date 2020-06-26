@@ -3,7 +3,7 @@
 
 const int f_row = 1;
 
-void fill_mas(double **array, int m, int n) {
+void fill_mat(double **array, int m, int n) {
 	for (int i = 1; i < m; i++) {
 		for (int j = 0; j < n; j++) {		
 			if (i % 2 == 0) {
@@ -27,7 +27,7 @@ void fill_mas(double **array, int m, int n) {
 }
 
 
-void print(double** array, int m, int n) {
+void print_mat(double** array, int m, int n) {
 	for (int i = 0; i < m; i++) {
 		if (i == 0) {
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
@@ -42,21 +42,21 @@ void print(double** array, int m, int n) {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 }
 
-void print_in_file(string inpath, string outpath, double** array, int m, int n) {
+void print_result_in_file(string inpath, string outpath, double** array, int m, int n) {
 	cin >> outpath;
 	ifstream fcheck;
-	while (inpath == outpath) {
-		cout << "Адреса файлов совпадают. Введите путь к файлу: " << endl;
-		cin >> outpath;
+	if (inpath == outpath) {
+		save_result(outpath, array, wtdw_file(outpath), m, n);
+		main_menu();
 	}
 	fcheck.open(outpath);
 	while (!check_read_only(outpath)) {
 		fcheck.close();
 		cout << "Введите путь к файлу: " << endl;
 		cin >> outpath;
-		while (inpath == outpath) {
-			cout << "Адреса файлов совпадают. Введите путь к файлу: " << endl;
-			cin >> outpath;
+		if (inpath == outpath) {
+			save_result(outpath, array, wtdw_file(outpath), m, n);
+			main_menu();
 		}
 		fcheck.open(outpath);
 	}
@@ -65,9 +65,9 @@ void print_in_file(string inpath, string outpath, double** array, int m, int n) 
 		cout << "Ошибка! Некорректное путь или имя файла." << endl;
 		cout << "Введите путь к файлу: " << endl;
 		cin >> outpath;
-		while (inpath == outpath) {
-			cout << "Адреса файлов совпадают. Введите путь к файлу: " << endl;
-			cin >> outpath;
+		if (inpath == outpath) {
+			save_result(outpath, array, wtdw_file(outpath), m, n);
+			main_menu();
 		}
 		fcheck.open(outpath, ios::in);
 	}
@@ -137,7 +137,7 @@ void save_source(string inpath, double** array, int modout, int m, int n) {
 	cout << "Исходные данные успешно сохранены! " << endl;
 }
 
-double** create(int m, int n) {
+double** create_mat(int m, int n) {
 	double** array = new double* [m];
 	for (int i = 0; i < m; i++) {
 		array[i] = new double[n];

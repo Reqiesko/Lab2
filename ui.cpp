@@ -19,8 +19,8 @@ void greeting() {
 	cout << endl;
 }
 
-void Menu() {
-	fill_mat floor = keyboard;
+void main_menu() {
+	fill_matrix floor = keyboard;
 	int var = floor;
 	cout << endl;
 	while (true) {
@@ -52,8 +52,8 @@ void Menu() {
 				break;
 			}
 			case test: {
-				tests();
-				Menu();
+				module_tests();
+				main_menu();
 			}
 			case out: {
 				cout << "Программа завершена." << endl;

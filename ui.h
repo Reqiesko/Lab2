@@ -10,14 +10,14 @@ using namespace std;
 
 void greeting();
 
-void Menu();
+void main_menu();
 
 int save_result_q();
 
 int wtdw_file(string& pFile);
 
 
-enum fill_mat {
+enum fill_matrix {
 	keyboard = 1,
 	from_file = 2,
 	random = 3,

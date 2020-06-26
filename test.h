@@ -1,4 +1,4 @@
 #pragma once
 #include "func.h"
 
-void tests();
+void module_tests();

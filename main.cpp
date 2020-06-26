@@ -3,6 +3,6 @@
 int main() {
 	setlocale(LC_ALL, "RU");
 	greeting();
-	Menu();
+	main_menu();
 	return 0;
 }

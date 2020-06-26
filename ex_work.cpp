@@ -14,26 +14,26 @@ void keyboard_way() {
 	m = number_check();
 	cout << "Введите количество столбцов: " << endl;
 	n = number_check();
-	double** mat = create(m, n);
-	keyboard_input(mat, m, n);	
-	fill_mas(mat, m, n);
+	double** mat = create_mat(m, n);
+	keyboard_input(mat, n);	
+	fill_mat(mat, m, n);
 	cout << "Сохранить исходные данные в файл? " << endl;
 	if (save_result_q() == 1) {
 		cout << "Введите путь к файлу вывода: " << endl;
 		print_source(inpath, mat, m, n);
 	}
-	print(mat, m, n);
+	print_mat(mat, m, n);
 	cout << "Сохранить массив в файл? " << endl;
 	if (save_result_q() == 1) {
 		cout << "Введите путь к файлу вывода: " << endl;
-		print_in_file(inpath, outpath, mat, m, n);
+		print_result_in_file(inpath, outpath, mat, m, n);
 	}
 	system("pause");
 	for (int i = 0; i < m; i++) {
 		delete[] mat[i];
 	}
 	delete[] mat;
-	Menu();
+	main_menu();
 }
 
 
@@ -55,7 +55,7 @@ void file_way() {
 		cout << "Ошибка! Не удаётся открыть файл!" << endl;
 		cin.clear();
 		cin.ignore(ignor, '\n');
-		Menu();
+		main_menu();
 	}
 	else {
 		int temp_int, count = 0, i, j;
@@ -65,7 +65,7 @@ void file_way() {
 			cin.clear();
 			cin.ignore(ignor, '\n');
 			fin.close();
-			Menu();
+			main_menu();
 		}
 		while (fin) {
 			if (count < 3) {
@@ -75,7 +75,7 @@ void file_way() {
 					cin.clear();
 					cin.ignore(ignor, '\n');
 					fin.close();
-					Menu();
+					main_menu();
 				}
 				count++;
 			}
@@ -86,7 +86,7 @@ void file_way() {
 					cin.clear();
 					cin.ignore(ignor, '\n');
 					fin.close();
-					Menu();
+					main_menu();
 				}
 			}
 		}
@@ -96,7 +96,7 @@ void file_way() {
 		fin.open(inpath, ios::in);
 		fin >> m;
 		fin >> n;
-		double** mat = create(m, n);
+		double** mat = create_mat(m, n);
 		bool check = true;
 		while (check) {
 			for (i = 0; i < f_row; i++) {
@@ -107,12 +107,12 @@ void file_way() {
 			}			
 		}	
 		cout << m << " " << n << endl;
-		fill_mas(mat, m, n);
-		print(mat, m, n);
+		fill_mat(mat, m, n);
+		print_mat(mat, m, n);
 		cout << "Сохранить массив в файл? " << endl;
 		if (save_result_q() == 1) {
 			cout << "Введите путь к файлу вывода: " << endl;
-			print_in_file(inpath, outpath, mat, m, n);
+			print_result_in_file(inpath, outpath, mat, m, n);
 		}
 		system("pause");
 		for (i = 0; i < m; i++) {
@@ -120,7 +120,7 @@ void file_way() {
 		}
 		delete[] mat;
 	}
-	Menu();
+	main_menu();
 }
 
 
@@ -132,20 +132,20 @@ void random_way() {
 	m = number_check();
 	cout << "Введите количество столбцов: " << endl;
 	n = number_check();
-	double** mat = create(m, n);
+	double** mat = create_mat(m, n);
 	random_input(mat, m, n);
 	cout << "Сохранить исходные данные в файл? " << endl;
 	if (save_result_q() == 1) {
 		cout << "Введите путь к файлу вывода: " << endl;
 		print_source(inpath, mat, m, n);
 	}
-	fill_mas(mat, m, n);
-	print(mat, m, n);
+	fill_mat(mat, m, n);
+	print_mat(mat, m, n);
 	
 	cout << "Сохранить массив в файл? " << endl;
 	if (save_result_q() == 1) {
 		cout << "Введите путь к файлу вывода: " << endl;
-		print_in_file(inpath, outpath, mat, m, n);
+		print_result_in_file(inpath, outpath, mat, m, n);
 	}
 	system("pause");
 	for (i = 0; i < m; i++) {
@@ -158,7 +158,7 @@ void random_way() {
 
 
 
-void keyboard_input(double **array, int m, int n) {
+void keyboard_input(double **array, int n) {
 	for (int i = 0; i < f_row; i++) {
 		for (int j = 0; j < n; j++) {
 			cout << "U" << "[" << i + 1 << "]" << "[" << j + 1 << "]" << " = ";
